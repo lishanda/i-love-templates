@@ -7,6 +7,15 @@
 В wemake-django-template уже встроен и сконфигурирован модуль для генерации 
 документации `sphinx`.
 
+Синтаксис
+---------
+
+Для написания документации используется синтаксис ReStructuredText.
+
+`Гайд <https://docs22.readthedocs.io/en/latest/rst-markup.html>`_ 
+
+`Официальная документация <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_ 
+
 Генерация
 ---------
 
