@@ -57,7 +57,6 @@ E2E
 
 Сохраним его в tests/e2e/integration.js
 
-```
 import { Selector } from 'testcafe'
 
 fixture('Getting Started')
@@ -70,7 +69,7 @@ fixture('Getting Started')
           .click('#reloadEntities')
           .expect(Selector('#text-1').innerText).notEql(initialValue);
   });
-```
+
 
 Обязательно указываем fixture
 
