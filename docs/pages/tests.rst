@@ -61,15 +61,14 @@ import { Selector } from 'testcafe'
 
 fixture('Getting Started')
   .page('http://127.0.0.1:3000/')
-  
-  test('My second test', async t => {
-     const initialValue = await Selector('#text-1').innerText;
-     await t
-          .click('#button-1')
-          .click('#reloadEntities')
-          .expect(Selector('#text-1').innerText).notEql(initialValue);
-  });
 
+  test('My second test', async t => {
+  const initialValue = await Selector('#text-1').innerText;
+  await t
+     .click('#button-1')
+     .click('#reloadEntities')
+     .expect(Selector('#text-1').innerText).notEql(initialValue);
+});
 
 Обязательно указываем fixture
 
