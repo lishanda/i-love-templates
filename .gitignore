@@ -4,5 +4,6 @@
 # Sphinx documentation
 docs/_build/
 
-# Idea files
+# IDE files
 .idea/
+.vscode/

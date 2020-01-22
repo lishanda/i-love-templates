@@ -94,8 +94,11 @@ E2E
 
 Используем `TestCafe <https://github.com/DevExpress/testcafe>`_ 
 
+`Документация API <https://devexpress.github.io/testcafe/documentation/test-api/assertions/assertion-api.html>`_ 
+
 Пример тестов
 ~~~~~~~~~~~~~
+
 
 Пишем простой скрипт, который получает текстовое значение тега, вызывает действие, 
 меняющее это значение, и сравнивает с предыдущим

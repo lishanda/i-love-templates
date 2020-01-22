@@ -7,7 +7,7 @@
 =======================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Содержание:
 
    pages/preparations.rst
@@ -18,6 +18,14 @@
    pages/tests.rst
    pages/documentation.rst
 
+Ссылки на шаблоны
+=================
+
+Backend: `wemake-django-template <https://github.com/wemake-services/wemake-django-template>`_
+    *  `Документация <https://wemake-django-template.readthedocs.io/en/latest/?badge=latest>`_ 
+
+Frontend: `wemake-vue-template <https://github.com/wemake-services/wemake-vue-template/>`_   
+    * `Документация <https://wemake-services.gitbook.io/wemake-vue-template/>`_ 
 
 Критерии оценивания
 ===================
