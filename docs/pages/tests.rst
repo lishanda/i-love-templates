@@ -7,68 +7,98 @@ Backend
 
 Frontend
 --------
-Расположение тестов при условии использования vue-шаблона wemake: frontend/tests/components/*.spec.ts
+
+Расположение тестов при условии использования vue-шаблона wemake: 
+frontend/tests/components/*.spec.ts
 
 Положим название тестируемой модели/компонента = YourModel/YourVue
 
-Для генерации моделек, используемых в тестах, реализуем factory в файле tests/fixtures/vuex.ts
+Для генерации моделек, используемых в тестах, реализуем factory в файле
+tests/fixtures/vuex.ts
 
-Используем тип интересуемой модели в строке .extend и добавляем поля, повторяя структуру модели
+Используем тип интересуемой модели в строке .extend и добавляем поля, 
+повторяя структуру модели
 
-export const yourModelFactory = new rosie.Factory()
-  .extend<FakerFactoryType & YourModelType, FakerFactoryType>(fakerFactory)
-  .attr('id', faker.random.number)
-  .attr('text', faker.internet.email)
+.. code-block:: javascript
+
+  export const yourModelFactory = new rosie.Factory()
+    .extend<FakerFactoryType & YourModelType, FakerFactoryType>(fakerFactory)
+    .attr('id', faker.random.number)
+    .attr('text', faker.internet.email)
 
 Импортируем yourModelFactory в YourModel.spec.ts
 
-Обновляем типы сущности вашей модели (назовем yourEntity) и store для глобального окоружения тестов
+Обновляем типы сущности вашей модели (назовем yourEntity) и store для 
+глобального окоружения тестов
 
 В подготовке глобального контекста (beforeEach) используем созданную фабрику:
-yourEntity = yourModelFactory.build()
+
+.. code-block:: javascript
+
+  yourEntity = yourModelFactory.build()
 
 Структура поля state повторяет StateType из client/logic/types.ts
 
-Далее во всех тестах где либо используется toBeValidProps либо словарь данных располагается в свойства propsData названием поля (этого словаря), в которое кладется сущность из тестируемого контексте (yourEntity), должно совпадать с названием этого же свойства в самой Vue (YourVue), которая в шаблоне расположена в конце файла после @Component({})
-export default class YourVue extends mixins(TypedStoreMixin) {
+Далее во всех тестах где либо используется toBeValidProps либо словарь данных 
+располагается в свойства propsData названием поля (этого словаря), в которое 
+кладется сущность из тестируемого контексте (yourEntity), должно совпадать с 
+названием этого же свойства в самой Vue (YourVue), которая в шаблоне расположена 
+в конце файла после @Component({})
 
-Или же можно в тестируемом контексте назвать переменную модели так, как в Vue-объекте, тогда явно указывать имя в props не будет необходимости.
+.. code-block:: javascript
+
+  export default class YourVue extends mixins(TypedStoreMixin) {
+
+Или же можно в тестируемом контексте назвать переменную модели так, как в 
+Vue-объекте, тогда явно указывать имя в props не будет необходимости.
 
 Каждый тест должен начинаться с expect.hasAssertions()
 
-Дальше можно считать html-сущности wrapper.findAll('button') и тестировать их количество expect(wrapper.findAll('button')).toHaveLength(1)
+Дальше можно считать html-сущности wrapper.findAll('button') и тестировать их 
+количество expect(wrapper.findAll('button')).toHaveLength(1)
 
-Обработка html-логики осуществляется в контексте шаблона YourVue.vue (<template>...</template>)
+Обработка html-логики осуществляется в контексте шаблона YourVue.vue 
+(<template>...</template>)
 
 Или обращаться к элементу с определенным классом, ставя точку перед названием класса
 
-expect(wrapper.find('.id').text().trim()).toStrictEqual(`${textItem.id}`)
-expect(wrapper.find('.text').text().trim()).toStrictEqual(textItem.text)
+.. code-block:: javascript
 
-В вышеописанном случае фабрика производит id типа number, а find().text() - string, поэтому применяется шаблон форматирования ```${variableName}``` для преобразования числа в строку
+  expect(wrapper.find('.id').text().trim()).toStrictEqual(`${textItem.id}`)
+  expect(wrapper.find('.text').text().trim()).toStrictEqual(textItem.text)
 
-Запуск тестов npm run test:unit
+В вышеописанном случае фабрика производит id типа number, а 
+find().text() - string, поэтому применяется шаблон форматирования 
+```${variableName}``` для преобразования числа в строку
+
+Запуск тестов 
+.. code-block:: 
+
+  npm run test:unit
 
 E2E
 ---
 Используем testcafe
 
-Пишем простой скрипт, который получает текстовое значение тега, вызывает действие, меняющее это значение, и сравнивает с предыдущим
+Пишем простой скрипт, который получает текстовое значение тега, вызывает действие, 
+меняющее это значение, и сравнивает с предыдущим
 
 Сохраним его в tests/e2e/integration.js
 
-import { Selector } from 'testcafe'
+.. code-block:: javascript
 
-fixture('Getting Started')
-  .page('http://127.0.0.1:3000/')
+  import { Selector } from 'testcafe'
 
-  test('My second test', async t => {
-  const initialValue = await Selector('#text-1').innerText;
-  await t
-     .click('#button-1')
-     .click('#reloadEntities')
-     .expect(Selector('#text-1').innerText).notEql(initialValue);
-});
+  fixture('Getting Started')
+    .page('http://127.0.0.1:3000/')
+
+    test('My second test', async t => {
+    const initialValue = await Selector('#text-1').innerText;
+    await t
+      .click('#button-1')
+      .click('#reloadEntities')
+      .expect(Selector('#text-1').innerText).notEql(initialValue);
+  });
 
 Обязательно указываем fixture
 
@@ -80,12 +110,22 @@ URL, на котором крутится frontend, тоже
 
 Для генерации уникальных id внутри Vue-объекта добавляем binding-тег
 
-:id="textId"
+.. code-block:: javascript
 
-При этом содержимое между кавычек интерпретируется как имя переменной, которая должна быть объявлена ниже в шаблоне в export default class YourVue extends mixins(TypedStoreMixin) {
+  :id="textId"
+
+При этом содержимое между кавычек интерпретируется как имя переменной, 
+которая должна быть объявлена ниже в шаблоне в 
+export default class YourVue extends mixins(TypedStoreMixin) {
 
 Например так
 
-readonly textId = `text-${this.yourModel.id}`
+.. code-block:: javascript
 
-Запуск тестов testcafe chrome integration.js
+  readonly textId = `text-${this.yourModel.id}`
+
+Запуск тестов 
+
+.. code-block:: 
+
+  testcafe chrome integration.js
