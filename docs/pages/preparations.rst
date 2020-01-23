@@ -20,7 +20,7 @@ Wemake. Каждый из шаблонов содержит подробную �
 Установка Backend
 -----------------
 Ссылка на шаблон: `wemake-django-template <https://github.com/wemake-services/wemake-django-template>`_
-    *  `Документация <https://wemake-django-template.readthedocs.io/en/latest/?badge=latest>`_ 
+    *  `Документация wemake-django-template <https://wemake-django-template.readthedocs.io/en/latest/?badge=latest>`_ 
 
 Вам понадобятся:
     * Python 3.7.6
@@ -72,7 +72,7 @@ Wemake. Каждый из шаблонов содержит подробную �
 Создаём суперпользователя и таблицу, имена должны совпадать с названием проекта,
 указанным при использовании cookiecutter
 
-.. code-block:: sql
+.. code-block::
 
     CREATE USER имя_проекта SUPERUSER;
     CREATE DATABASE имя_проекта OWNER имя_проекта ENCODING 'utf-8';
@@ -103,7 +103,7 @@ Wemake. Каждый из шаблонов содержит подробную �
 Установка Frontend
 ------------------
 Ссылка на шаблон: `wemake-vue-template <https://github.com/wemake-services/wemake-vue-template/>`_ 
-    * `Документация <https://wemake-services.gitbook.io/wemake-vue-template/>`_ 
+    * `Документация wemake-vue-template <https://wemake-services.gitbook.io/wemake-vue-template/>`_ 
 
 
 Вам понадобятся:

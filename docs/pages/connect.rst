@@ -46,7 +46,7 @@ comments.
 
 Здесь же создаём из неё тип данных.
 
-.. code-block:: js
+.. code-block:: javascript
 
     // Модель
     export const Collection = ts.type({
@@ -67,7 +67,7 @@ comments.
 
 Создаём токен для сервиса:
 
-.. code-block:: js
+.. code-block:: javascript
 
     export default {
         // My service
@@ -80,7 +80,7 @@ comments.
 
 В logic/types.ts добавляем модуль:
 
-.. code-block:: js
+.. code-block:: javascript
 
     import { CollectionType } from '~/logic/comments/models'
     ...
@@ -96,7 +96,7 @@ comments.
 В logic/comments/services/api.ts создаём сервис. 
 Сюда же добавляем все взаимодействия с бэкендом.
 
-.. code-block:: js
+.. code-block::
     :linenos:
 
     @Service(tokens.MY_SERVICE)
@@ -127,7 +127,7 @@ comments.
 
 Это необходимо для связи локального хранилища и API
 
-.. code-block:: js
+.. code-block::
     :linenos:
 
     import { CollectionType } from '~/logic/comments/models'
@@ -197,7 +197,7 @@ comments.
 
 Добавляем модуль в хранилище logic/store.ts
 
-.. code-block:: js
+.. code-block::
 
     import { MyModule } from '~/logic/comments/module'
 
@@ -209,7 +209,7 @@ comments.
 
 logic/types.ts
 
-.. code-block:: js
+.. code-block:: javascript
 
     import { CollectionType } from '~/logic/comments/models'
 
@@ -235,7 +235,7 @@ logic/types.ts
 CollectionFrame. Опираемся на components/Comment.vue
 при написании собственного компонента.
 
-.. code-block:: html
+.. code-block::
 
     <template>
     <div>
@@ -258,7 +258,7 @@ CollectionFrame. Опираемся на components/Comment.vue
     </div>
     </template>
 
-.. code-block:: js
+.. code-block::
 
     <script lang="ts">
     import Component, { mixins } from 'nuxt-class-component'
@@ -319,7 +319,7 @@ CollectionFrame. Опираемся на components/Comment.vue
     </main>
     </template>
 
-.. code-block:: js
+.. code-block::
 
     <script lang="ts">
     import Component, { mixins } from 'nuxt-class-component'
