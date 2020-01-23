@@ -149,3 +149,4 @@ Django REST framework
 
     http://127.0.0.1:8000/api/collections/
 
+Теперь наш бэкенд готов для интеграции с фронтендом!
