@@ -5,7 +5,7 @@
 Backend
 -------
 
-* wemake-style-guideline
+* `wemake-style-guideline <https://wemake-python-stylegui.de/>`_ 
 * flake8
 
 Запуск из корневой папки backend'a:
