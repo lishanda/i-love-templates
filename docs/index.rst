@@ -11,12 +11,13 @@
    :caption: Содержание:
 
    pages/preparations.rst
-   pages/linters.rst
    pages/backend.rst
    pages/contract.rst
+   pages/connect.rst
    pages/frontend.rst
    pages/tests.rst
    pages/documentation.rst
+   pages/linters.rst
 
 Ссылки на шаблоны
 =================
