@@ -29,6 +29,8 @@ Content Security Policy.
         'corsheaders',
         'rest_framework',
     )
+    # Разрешаем переадресацию на другие хосты
+    CORS_ORIGIN_ALLOW_ALL = True
 
 Далее пути будут указываться относительно папки server.
 
